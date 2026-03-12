@@ -1,0 +1,19 @@
+{% extends "courses/layout.html" %}
+
+{% block body %}
+
+    <h1>{{ course.title }}</h1>
+
+    <p>Code: {{ course.code }}</p>
+    <p>Instructor: {{ course.instructor.name }}</p>
+    <p>Credits: {{ course.credits }}</p>
+    <p>Capacity: {{ course.capacity }}</p>
+    <p>Enrolled Students: {{ enrollment_count }}</p>
+
+    <form action="{% url 'course_detail' course.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Enroll in this Course</button>
+    </form>
+
+{% endblock %}
+
